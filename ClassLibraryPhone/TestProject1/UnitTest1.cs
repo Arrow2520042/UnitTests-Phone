@@ -17,11 +17,27 @@ namespace TestProject1
         public void konstruktor_zakrotkinumertel_arhumentexeption()
         {
             var owner = "piotr";
-            var number = "8768545";
+            var number = "87678545";
             Assert.ThrowsException<ArgumentException>(() => {new Phone(owner, number); });
-           
-
         }
-
+        [TestMethod]
+        public void konstruktor_iloscmiejsc_phonebook()
+        {
+            var phoneBookCapacity = 100;
+            var owner = "piotr";
+            var number = "876785453";
+            var phoneBook = new Dictionary<int, Phone>();
+            for (int i = 0; i <= phoneBookCapacity; i++)
+            {
+                var tel1 = new Phone(owner, number);
+                phoneBook.Add(i, tel1);
+            }
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                var tel1 = new Phone(owner, number);
+                phoneBook.Add(phoneBookCapacity, tel1);
+            }
+            );
+        }
     }
 }
