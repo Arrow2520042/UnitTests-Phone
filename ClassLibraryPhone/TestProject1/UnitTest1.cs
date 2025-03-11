@@ -38,6 +38,14 @@ namespace TestProject1
                 phoneBook.Add(phoneBookCapacity, tel1);
             }
             );
+
+        }
+        [TestMethod]
+        public void konstruktor_niewlasciwa_nazwa_owner()
+        {
+            var owner = "";
+            var number = "876785453";
+            Assert.ThrowsException<ArgumentException>(() => { new Phone(owner, number); });
         }
     }
 }
