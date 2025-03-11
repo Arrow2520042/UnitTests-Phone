@@ -1,4 +1,5 @@
 using ClassLibrary;
+using System.Xml.Linq;
 
 namespace TestProject1
 {
@@ -17,7 +18,7 @@ namespace TestProject1
         public void konstruktor_zakrotkinumertel_arhumentexeption()
         {
             var owner = "piotr";
-            var number = "87678545";
+            var number = "12345678";
             Assert.ThrowsException<ArgumentException>(() => {new Phone(owner, number); });
         }
         [TestMethod]
@@ -46,6 +47,29 @@ namespace TestProject1
             var owner = "";
             var number = "876785453";
             Assert.ThrowsException<ArgumentException>(() => { new Phone(owner, number); });
+        }
+        [TestMethod]
+        public void test_call_numer_istnieje()
+        {
+            var owner = "piotr";
+            var number = "876785453";
+            var tel1 = new Phone(owner, number);
+            var name1 = "kasia";
+            var number1 = "876785453";
+            tel1.AddContact(name1, number1);
+            var res = tel1.Call(name1);
+            Assert.AreEqual($"Calling {number1} ({name1}) ...", res);
+
+        }
+        [TestMethod]
+        public void test_call_numer_nie_istnieje()
+        {
+            var owner = "piotr";
+            var number = "876785453";
+            var tel1 = new Phone(owner, number);
+            var name1 = "kasia";
+            var number1 = "876785453";
+            Assert.ThrowsException<InvalidOperationException>(() => { tel1.Call(name1); });
         }
     }
 }
