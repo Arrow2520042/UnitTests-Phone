@@ -71,5 +71,34 @@ namespace TestProject1
             var number1 = "876785453";
             Assert.ThrowsException<InvalidOperationException>(() => { tel1.Call(name1); });
         }
+
+        [TestMethod]
+        public void addExistingContact_returnsFalse()
+        {
+
+            var owner = "piotr";
+            var number = "876678545";
+            var phone = new Phone(owner, number);
+            var name1 = "asdjhads";
+            var number1 = "878733888";
+            phone.AddContact(name1, number1);
+            var result = phone.AddContact(name1, number1);
+            Assert.IsFalse(result);
+            Assert.AreEqual(1, phone.Count);
+        }
+
+        [TestMethod]
+        public void addNewContact_returnsTrue()
+        {
+
+            var owner = "piotr";
+            var number = "876678545";
+            var phone = new Phone(owner, number);
+            var name1 = "asdjhads";
+            var number1 = "878733888";
+            var result = phone.AddContact(name1, number1);
+            Assert.IsTrue(result);
+            Assert.AreEqual(1, phone.Count);
+        }
     }
 }
