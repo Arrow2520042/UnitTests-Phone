@@ -15,14 +15,14 @@ namespace TestProject1
             Assert.AreEqual(owner, tel1.Owner);
         }
         [TestMethod]
-        public void konstruktor_zakrotkinumertel_arhumentexeption()
+        public void test_zly_nrtel_argumentexception()
         {
             var owner = "piotr";
-            var number = "12345678";
+            var number = "77588888u";
             Assert.ThrowsException<ArgumentException>(() => {new Phone(owner, number); });
         }
         [TestMethod]
-        public void konstruktor_iloscmiejsc_phonebook()
+        public void test_iloscmiejsc_phonebook()
         {
             var phoneBookCapacity = 100;
             var owner = "piotr";
@@ -42,7 +42,7 @@ namespace TestProject1
 
         }
         [TestMethod]
-        public void konstruktor_niewlasciwa_nazwa_owner()
+        public void test_niewlasciwa_nazwa_owner()
         {
             var owner = "";
             var number = "876785453";
